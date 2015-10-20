@@ -1,8 +1,10 @@
 package configuration;
 
 /**
+ * 配置类
  * Created by CHester on 15/10/20.
  */
+
 public class Conf {
     private static String path = "peopleInfo.dat";
 
