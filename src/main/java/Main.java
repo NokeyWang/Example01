@@ -1,6 +1,5 @@
-package dao;
-
 import classes.EnumSex;
+import classes.PeopleLinkedListCollection;
 import classes.Student;
 import classes.Teacher;
 import configuration.Conf;
@@ -11,7 +10,7 @@ import java.util.Date;
 /**
  * Created by CHester on 15/10/19.
  */
-public class DataManager {
+public class Main {
 
     public static void main(String[] args) {
         PeopleLinkedListCollection peopleLinkedListCollection = new PeopleLinkedListCollection();
