@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * 教师类
  * Created by CHester on 15/10/15.
  */
 
