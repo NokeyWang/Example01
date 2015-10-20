@@ -3,6 +3,7 @@ import classes.PeopleLinkedListCollection;
 import classes.Student;
 import classes.Teacher;
 import configuration.Conf;
+import dao.Dao;
 import frame.MainJFrame;
 
 import java.util.Date;
@@ -13,10 +14,18 @@ import java.util.Date;
 public class Main {
 
     public static void main(String[] args) {
-        PeopleLinkedListCollection peopleLinkedListCollection = new PeopleLinkedListCollection();
+        initializeData();
+        new MainJFrame().setVisible(true);
+    }
+
+    /**
+     * 在文件中初始化添加几个人员数据
+     */
+    public static void initializeData() {
         /*
          * 乱序添加几个教师和学生
          */
+        PeopleLinkedListCollection peopleLinkedListCollection = new PeopleLinkedListCollection();
         peopleLinkedListCollection.peopleLinkedList.add(new Student("001", EnumSex.male, new Date(1991 - 1900, 4 - 1, 5),
                 "370600199104051122", "201321010001", "Computer Software and Theory", "2013"));
         peopleLinkedListCollection.peopleLinkedList.add(new Student("002", EnumSex.female, new Date(1993 - 1900, 1 - 1, 1),
@@ -35,10 +44,6 @@ public class Main {
          */
 
         String path = Conf.getPath();
-        peopleLinkedListCollection.toStoreAsString(peopleLinkedListCollection.peopleLinkedList, path);
-        new MainJFrame().setVisible(true);
-        PeopleLinkedListCollection peopleLinkedListCollection1 = new PeopleLinkedListCollection();
-        peopleLinkedListCollection1.peopleLinkedList = PeopleLinkedListCollection.readFromStorage(path);
-
+        Dao.toStoreAsString(peopleLinkedListCollection.peopleLinkedList, path);
     }
 }
