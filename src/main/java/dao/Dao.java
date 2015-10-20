@@ -1,6 +1,6 @@
 package dao;
 
-import classes.People;
+import classes.PeopleLinkedListCollection;
 import classes.Student;
 import classes.Teacher;
 import configuration.Conf;
