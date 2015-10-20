@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * 学生类
  * Created by CHester on 15/10/15.
  */
 public class Student extends People implements Serializable {
@@ -31,10 +32,10 @@ public class Student extends People implements Serializable {
     /**
      * 根据字符串格式的输入进行构造
      *
-     * @param number   编号
-     * @param sex      性别(男性为"male",女性为"female")
+     * @param number 编号
+     * @param sex 性别(男性为"male",女性为"female")
      * @param birthday 生日(格式为:yyyy-MM-dd)
-     * @param id       身份证号(18位数字)
+     * @param id 身份证号(18位数字)
      * @param studentNumber 学号
      * @param discipline 专业
      * @param grade 年级
