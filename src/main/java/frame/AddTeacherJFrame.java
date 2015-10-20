@@ -38,7 +38,7 @@ public class AddTeacherJFrame extends javax.swing.JFrame {
         addButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("添加教师");
+        setPreferredSize(new java.awt.Dimension(400, 300));
 
         addButton.setText("添加");
         addButton.addActionListener(new java.awt.event.ActionListener() {

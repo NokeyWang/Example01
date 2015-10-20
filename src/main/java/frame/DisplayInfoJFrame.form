@@ -67,7 +67,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ReturnButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="Frame.DisplayInfoJPanel" name="displayTeacherInfoJPanel1">
+    <Component class="frame.DisplayInfoJPanel" name="displayTeacherInfoJPanel1">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
