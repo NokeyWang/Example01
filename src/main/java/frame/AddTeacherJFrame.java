@@ -6,14 +6,12 @@
 package frame;
 
 import classes.Teacher;
-import configuration.Conf;
 import dao.Dao;
-import dao.PeopleLinkedListCollection;
 
 import javax.swing.*;
 
 /**
- *
+ * 新增教师窗口
  * @author CHester
  */
 public class AddTeacherJFrame extends javax.swing.JFrame {
@@ -89,6 +87,12 @@ public class AddTeacherJFrame extends javax.swing.JFrame {
                     "或者\"female\"");
             return;
         }
+
+        /*
+        ————————————————————————————————————————————————————————————————————————————————————————————————————
+        此处请仿照上面添加输入的合法性检查!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        ————————————————————————————————————————————————————————————————————————————————————————————————————
+         */
 
         /*
          * 根据输入创建一个教师对象

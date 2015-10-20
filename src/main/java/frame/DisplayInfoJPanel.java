@@ -12,7 +12,7 @@ package frame;
 public class DisplayInfoJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form DisplayTeacherInfoJPanel
+     * Creates new form DisplayInfoJPanel
      */
     public DisplayInfoJPanel() {
         initComponents();

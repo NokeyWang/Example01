@@ -9,10 +9,13 @@ import classes.People;
 import classes.Student;
 import classes.Teacher;
 import configuration.Conf;
-import dao.PeopleLinkedListCollection;
+import classes.PeopleLinkedListCollection;
+import dao.Dao;
+
 import java.util.Iterator;
 
 /**
+ * 展示全体人员信息窗口
  * @author CHester
  */
 public class DisplayInfoJFrame extends javax.swing.JFrame {
@@ -83,7 +86,7 @@ public class DisplayInfoJFrame extends javax.swing.JFrame {
 
         path = Conf.getPath();
         peopleLinkedListCollection = new PeopleLinkedListCollection();
-        peopleLinkedListCollection.peopleLinkedList = peopleLinkedListCollection.readFromStorage(path);
+        peopleLinkedListCollection.peopleLinkedList = Dao.readFromStorage(path);
         iterator = peopleLinkedListCollection.peopleLinkedList.iterator();
         this.nextInfo();
         pack();
@@ -146,6 +149,9 @@ public class DisplayInfoJFrame extends javax.swing.JFrame {
     private Iterator<People> iterator;
     private String path;
 
+    /**
+     * 读取下一名人员的信息,根据该人员是教师或者学生进行相应格式的展示
+     */
     public void nextInfo() {
         People p = iterator.next();
         this.displayInfoJPanel.jLabel1.setText("编号:");

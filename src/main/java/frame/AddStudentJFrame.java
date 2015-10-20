@@ -6,9 +6,7 @@
 package frame;
 
 import classes.Student;
-import configuration.Conf;
 import dao.Dao;
-import dao.PeopleLinkedListCollection;
 
 import javax.swing.*;
 
@@ -76,36 +74,7 @@ public class AddStudentJFrame extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-        /*
-         * 判断输入是否合法
-         */
-        String number, sex, birthday, id, studentNumber, discipline, grade;
-        if ((!addStudentJPanel1.sexTextField.getText().equals("male"))
-                && !addStudentJPanel1.sexTextField.getText().equals("female")) {
-            JOptionPane.showMessageDialog(null, "性别只能输入\"male\"" +
-                    "或者\"female\"");
-            return;
-        }
-        if (addStudentJPanel1.idTextField.getText().length() != 18) {
-            JOptionPane.showMessageDialog(null, "身份证长度必须为18位!");
-            return;
-        }
-        /*
-         * 根据输入创建一个学生对象
-         */
-        number = this.addStudentJPanel1.numberTextField.getText().trim();
-        sex = this.addStudentJPanel1.sexTextField.getText().trim();
-        birthday = this.addStudentJPanel1.birthdayTextField.getText().trim();
-        id = this.addStudentJPanel1.idTextField.getText().trim();
-        studentNumber = this.addStudentJPanel1.studentNumberTextField.getText().trim();
-        discipline = this.addStudentJPanel1.disciplineTextField.getText().trim();
-        grade = this.addStudentJPanel1.gradeTextField.getText().trim();
-        Student student = new Student(number, sex, birthday, id, studentNumber, discipline, grade);
-
-        Dao.addAStudentIntoData(student);
-
-        JOptionPane.showMessageDialog(null, "添加完成!");
-        this.dispose();
+        int mark = addAStudentAction();
     }//GEN-LAST:event_addButtonActionPerformed
 
     /**
@@ -150,4 +119,44 @@ public class AddStudentJFrame extends javax.swing.JFrame {
     private javax.swing.JButton addButton;
     private frame.AddStudentJPanel addStudentJPanel1;
     // End of variables declaration//GEN-END:variables
+
+    private int addAStudentAction() {
+        /*
+         * 判断输入是否合法
+         */
+        String number, sex, birthday, id, studentNumber, discipline, grade;
+        if ((!addStudentJPanel1.sexTextField.getText().equals("male"))
+                && !addStudentJPanel1.sexTextField.getText().equals("female")) {
+            JOptionPane.showMessageDialog(null, "性别只能输入\"male\"" +
+                    "或者\"female\"");
+            return -1;
+        }
+        if (addStudentJPanel1.idTextField.getText().length() != 18) {
+            JOptionPane.showMessageDialog(null, "身份证长度必须为18位!");
+            return -1;
+        }
+
+        /*
+        ————————————————————————————————————————————————————————————————————————————————————————————————————
+        此处请仿照上面添加输入的合法性检查!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        ————————————————————————————————————————————————————————————————————————————————————————————————————
+         */
+
+        /*
+         * 根据输入创建一个学生对象
+         */
+        number = this.addStudentJPanel1.numberTextField.getText().trim();
+        sex = this.addStudentJPanel1.sexTextField.getText().trim();
+        birthday = this.addStudentJPanel1.birthdayTextField.getText().trim();
+        id = this.addStudentJPanel1.idTextField.getText().trim();
+        studentNumber = this.addStudentJPanel1.studentNumberTextField.getText().trim();
+        discipline = this.addStudentJPanel1.disciplineTextField.getText().trim();
+        grade = this.addStudentJPanel1.gradeTextField.getText().trim();
+        Student student = new Student(number, sex, birthday, id, studentNumber, discipline, grade);
+
+        Dao.addAStudentIntoData(student);
+        JOptionPane.showMessageDialog(null, "添加完成!");
+        this.dispose();
+        return 1;
+    }
 }

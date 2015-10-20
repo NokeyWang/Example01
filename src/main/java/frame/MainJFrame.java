@@ -6,7 +6,7 @@
 package frame;
 
 /**
- *
+ * 主控制窗口
  * @author CHester
  */
 public class MainJFrame extends javax.swing.JFrame {
