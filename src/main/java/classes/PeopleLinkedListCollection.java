@@ -1,4 +1,4 @@
-package dao;
+package classes;
 
 import classes.People;
 import classes.Student;
