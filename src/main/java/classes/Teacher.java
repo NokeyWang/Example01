@@ -57,7 +57,8 @@ public class Teacher extends People implements Serializable {
      * @param title 职称
      * @param timeInJob 任职时长(例如:"18年")
      */
-    public Teacher(String number, String sex, String birthday, String id, String department, String teacherNumber, String title, String timeInJob) {
+    public Teacher(String number, String sex, String birthday, String id,
+                   String department, String teacherNumber, String title, String timeInJob) {
         super(number, sex, birthday, id);
         this.department = department;
         this.teacherNumber = teacherNumber;
