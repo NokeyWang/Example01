@@ -40,7 +40,8 @@ public class Student extends People implements Serializable {
      * @param discipline 专业
      * @param grade 年级
      */
-    public Student(String number, String sex, String birthday, String id, String studentNumber, String discipline, String grade) {
+    public Student(String number, String sex, String birthday, String id,
+                   String studentNumber, String discipline, String grade) {
         super(number, sex, birthday, id);
         this.studentNumber = studentNumber;
         this.discipline = discipline;
