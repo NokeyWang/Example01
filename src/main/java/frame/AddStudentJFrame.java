@@ -5,6 +5,7 @@
  */
 package frame;
 
+import classes.EnumSex;
 import classes.Student;
 import dao.Dao;
 
@@ -118,12 +119,12 @@ public class AddStudentJFrame extends javax.swing.JFrame {
          * 判断输入是否合法
          */
         String number, sex, birthday, id, studentNumber, discipline, grade;
-        if ((!addStudentJPanel1.sexTextField.getText().equals("male"))
-                && !addStudentJPanel1.sexTextField.getText().equals("female")) {
-            JOptionPane.showMessageDialog(null, "性别只能输入\"male\"" +
-                    "或者\"female\"");
-            return -1;
-        }
+//        if ((!addStudentJPanel1.sexTextField.getText().equals("male"))
+//                && !addStudentJPanel1.sexTextField.getText().equals("female")) {
+//            JOptionPane.showMessageDialog(null, "性别只能输入\"male\"" +
+//                    "或者\"female\"");
+//            return -1;
+//        }
         if (addStudentJPanel1.idTextField.getText().length() != 18) {
             JOptionPane.showMessageDialog(null, "身份证长度必须为18位!");
             return -1;
@@ -138,8 +139,16 @@ public class AddStudentJFrame extends javax.swing.JFrame {
         /*
          * 根据输入创建一个学生对象
          */
+
+        if (addStudentJPanel1.maleRadioButton.isSelected()) {
+            sex = addStudentJPanel1.maleRadioButton.getText().trim();
+        } else if (addStudentJPanel1.femaleRadioButton.isSelected()) {
+            sex = addStudentJPanel1.femaleRadioButton.getText().trim();
+        } else {
+            JOptionPane.showMessageDialog(null, "请选择性别!");
+            return -1;
+        }
         number = this.addStudentJPanel1.numberTextField.getText().trim();
-        sex = this.addStudentJPanel1.sexTextField.getText().trim();
         birthday = this.addStudentJPanel1.birthdayTextField.getText().trim();
         id = this.addStudentJPanel1.idTextField.getText().trim();
         studentNumber = this.addStudentJPanel1.studentNumberTextField.getText().trim();

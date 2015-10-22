@@ -12,6 +12,7 @@ import configuration.Conf;
 import classes.PeopleLinkedListCollection;
 import dao.Dao;
 
+import javax.swing.*;
 import java.util.Iterator;
 
 /**
@@ -153,6 +154,10 @@ public class DisplayInfoJFrame extends javax.swing.JFrame {
      * 读取下一名人员的信息,根据该人员是教师或者学生进行相应格式的展示
      */
     public void nextInfo() {
+        if (!iterator.hasNext()) {
+            JOptionPane.showMessageDialog(null, "已到最后一条!");
+            return;
+        }
         People p = iterator.next();
         this.displayInfoJPanel.jLabel1.setText("编号:");
         this.displayInfoJPanel.jLabel2.setText("性别:");

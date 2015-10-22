@@ -9,6 +9,7 @@ import classes.Teacher;
 import dao.Dao;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 /**
  * 新增教师窗口
@@ -38,7 +39,6 @@ public class AddTeacherJFrame extends javax.swing.JFrame {
         addButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 300));
 
         addButton.setText("添加");
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +71,7 @@ public class AddTeacherJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+    private int addButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
         /**
          * 判断文本框中的输入是否合法
@@ -79,14 +79,14 @@ public class AddTeacherJFrame extends javax.swing.JFrame {
         String number, sex, birthday, id, department, teacherNumber, title, timeInJob;
         if (addTeacherJPanel1.idTextField.getText().length() != 18) {
             JOptionPane.showMessageDialog(null, "身份证长度必须为18位!");
-            return;
+            return -1;
         }
-        if ((!addTeacherJPanel1.sexTextField.getText().equals("male"))
-                && !addTeacherJPanel1.sexTextField.getText().equals("female")) {
-            JOptionPane.showMessageDialog(null, "性别只能输入\"male\"" +
-                    "或者\"female\"");
-            return;
-        }
+//        if ((!addTeacherJPanel1.sexTextField.getText().equals("male"))
+//                && !addTeacherJPanel1.sexTextField.getText().equals("female")) {
+//            JOptionPane.showMessageDialog(null, "性别只能输入\"male\"" +
+//                    "或者\"female\"");
+//            return;
+//        }
 
         /*
         ————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -97,8 +97,15 @@ public class AddTeacherJFrame extends javax.swing.JFrame {
         /*
          * 根据输入创建一个教师对象
          */
+        if (addTeacherJPanel1.maleRadioButton.isSelected()) {
+            sex = addTeacherJPanel1.maleRadioButton.getText().trim();
+        } else if (addTeacherJPanel1.femaleRadioButton.isSelected()) {
+            sex = addTeacherJPanel1.femaleRadioButton.getText().trim();
+        } else {
+            JOptionPane.showMessageDialog(null, "请选择性别!");
+            return -1;
+        }
         number = this.addTeacherJPanel1.numberTextField.getText().trim();
-        sex = this.addTeacherJPanel1.sexTextField.getText().trim();
         birthday = this.addTeacherJPanel1.birthdayTextField.getText().trim();
         id = this.addTeacherJPanel1.idTextField.getText().trim();
         department = this.addTeacherJPanel1.departmentTextField.getText().trim();
@@ -110,6 +117,7 @@ public class AddTeacherJFrame extends javax.swing.JFrame {
         Dao.addATeacherIntoData(teacher);
         JOptionPane.showMessageDialog(null, "添加完成!");
         this.dispose();
+        return 1;
     }//GEN-LAST:event_addButtonActionPerformed
 
     /**

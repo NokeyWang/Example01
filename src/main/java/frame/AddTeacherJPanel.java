@@ -27,6 +27,7 @@ public class AddTeacherJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        sexButtonGroup = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -36,13 +37,14 @@ public class AddTeacherJPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         numberTextField = new javax.swing.JTextField();
-        sexTextField = new javax.swing.JTextField();
         birthdayTextField = new javax.swing.JTextField();
         idTextField = new javax.swing.JTextField();
         departmentTextField = new javax.swing.JTextField();
         teacherNumberTextField = new javax.swing.JTextField();
         titleTextField = new javax.swing.JTextField();
         timeInJobTextField = new javax.swing.JTextField();
+        maleRadioButton = new javax.swing.JRadioButton();
+        femaleRadioButton = new javax.swing.JRadioButton();
 
         jLabel1.setText("编号");
 
@@ -59,6 +61,12 @@ public class AddTeacherJPanel extends javax.swing.JPanel {
         jLabel7.setText("职称");
 
         jLabel8.setText("任职时长");
+
+        sexButtonGroup.add(maleRadioButton);
+        maleRadioButton.setText("male");
+
+        sexButtonGroup.add(femaleRadioButton);
+        femaleRadioButton.setText("female");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -78,13 +86,17 @@ public class AddTeacherJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(numberTextField)
-                    .addComponent(sexTextField)
                     .addComponent(birthdayTextField)
                     .addComponent(idTextField)
                     .addComponent(departmentTextField)
                     .addComponent(teacherNumberTextField)
                     .addComponent(titleTextField)
-                    .addComponent(timeInJobTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE))
+                    .addComponent(timeInJobTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(maleRadioButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(femaleRadioButton)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -97,7 +109,8 @@ public class AddTeacherJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(sexTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(maleRadioButton)
+                    .addComponent(femaleRadioButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -130,6 +143,7 @@ public class AddTeacherJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JTextField birthdayTextField;
     protected javax.swing.JTextField departmentTextField;
+    protected javax.swing.JRadioButton femaleRadioButton;
     protected javax.swing.JTextField idTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -139,8 +153,9 @@ public class AddTeacherJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    protected javax.swing.JRadioButton maleRadioButton;
     protected javax.swing.JTextField numberTextField;
-    protected javax.swing.JTextField sexTextField;
+    protected javax.swing.ButtonGroup sexButtonGroup;
     protected javax.swing.JTextField teacherNumberTextField;
     protected javax.swing.JTextField timeInJobTextField;
     protected javax.swing.JTextField titleTextField;
