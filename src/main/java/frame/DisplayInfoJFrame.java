@@ -168,20 +168,20 @@ public class DisplayInfoJFrame extends javax.swing.JFrame {
         this.displayInfoJPanel.infoJLabel3.setText(p.getBirthday());
         this.displayInfoJPanel.infoJLabel4.setText(p.getId());
         if (p instanceof Student) {
+            this.displayInfoJPanel.jLabel8.setVisible(false);
+            this.displayInfoJPanel.infoJLabel8.setVisible(false);
             this.displayInfoJPanel.jLabel5.setText("学号:");
             this.displayInfoJPanel.jLabel6.setText("专业:");
             this.displayInfoJPanel.jLabel7.setText("年级:");
-            this.displayInfoJPanel.jLabel8.setVisible(false);
-            this.displayInfoJPanel.infoJLabel8.setVisible(false);
             this.displayInfoJPanel.infoJLabel5.setText(((Student) p).getStudentNumber());
             this.displayInfoJPanel.infoJLabel6.setText(((Student) p).getDiscipline());
             this.displayInfoJPanel.infoJLabel7.setText(((Student) p).getGrade());
         } else if (p instanceof Teacher) {
+            this.displayInfoJPanel.jLabel8.setVisible(true);
+            this.displayInfoJPanel.infoJLabel8.setVisible(true);
             this.displayInfoJPanel.jLabel5.setText("院系:");
             this.displayInfoJPanel.jLabel6.setText("工号:");
             this.displayInfoJPanel.jLabel7.setText("职称:");
-            this.displayInfoJPanel.jLabel8.setVisible(true);
-            this.displayInfoJPanel.infoJLabel8.setVisible(true);
             this.displayInfoJPanel.jLabel8.setText("任职时长:");
             this.displayInfoJPanel.infoJLabel5.setText(((Teacher) p).getDepartment());
             this.displayInfoJPanel.infoJLabel6.setText(((Teacher) p).getTeacherNumber());

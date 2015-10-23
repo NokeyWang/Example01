@@ -81,12 +81,6 @@ public class AddTeacherJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "身份证长度必须为18位!");
             return -1;
         }
-//        if ((!addTeacherJPanel1.sexTextField.getText().equals("male"))
-//                && !addTeacherJPanel1.sexTextField.getText().equals("female")) {
-//            JOptionPane.showMessageDialog(null, "性别只能输入\"male\"" +
-//                    "或者\"female\"");
-//            return;
-//        }
 
         /*
         ————————————————————————————————————————————————————————————————————————————————————————————————————

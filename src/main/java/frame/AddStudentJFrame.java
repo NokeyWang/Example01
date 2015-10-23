@@ -119,12 +119,6 @@ public class AddStudentJFrame extends javax.swing.JFrame {
          * 判断输入是否合法
          */
         String number, sex, birthday, id, studentNumber, discipline, grade;
-//        if ((!addStudentJPanel1.sexTextField.getText().equals("male"))
-//                && !addStudentJPanel1.sexTextField.getText().equals("female")) {
-//            JOptionPane.showMessageDialog(null, "性别只能输入\"male\"" +
-//                    "或者\"female\"");
-//            return -1;
-//        }
         if (addStudentJPanel1.idTextField.getText().length() != 18) {
             JOptionPane.showMessageDialog(null, "身份证长度必须为18位!");
             return -1;
