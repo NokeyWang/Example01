@@ -6,6 +6,7 @@
 package frame;
 
 import classes.Student;
+import util.StudentGradeException;
 
 import javax.swing.*;
 
@@ -41,7 +42,11 @@ public class AddStudentJDialog extends javax.swing.JDialog {
         addButton.setText("添加");
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtonActionPerformed(evt);
+                try {
+                    addButtonActionPerformed(evt);
+                } catch (StudentGradeException e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                }
             }
         });
 
@@ -69,7 +74,7 @@ public class AddStudentJDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) throws StudentGradeException {//GEN-FIRST:event_addButtonActionPerformed
         String number, sex, birthday, id, studentNumber, discipline, grade;
 
         if (addStudentJPanel1.idTextField.getText().length() != 18) {
@@ -84,6 +89,11 @@ public class AddStudentJDialog extends javax.swing.JDialog {
         } else {
             JOptionPane.showMessageDialog(null, "请选择性别!");
             return;
+        }
+
+        if (((Integer.parseInt(addStudentJPanel1.gradeTextField.getText().trim())) < 2012) ||
+                (Integer.parseInt(addStudentJPanel1.gradeTextField.getText().trim()) > 2015)) {
+            throw new StudentGradeException("年级只能在2012~2015之间!");
         }
         number = this.addStudentJPanel1.numberTextField.getText().trim();
         birthday = this.addStudentJPanel1.birthdayTextField.getText().trim();

@@ -6,6 +6,7 @@
 package frame;
 
 import classes.Teacher;
+import util.TeacherTitleException;
 
 import javax.swing.*;
 
@@ -41,7 +42,11 @@ public class AddTeacherJDialog extends javax.swing.JDialog {
         addButton.setText("添加");
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtonActionPerformed(evt);
+                try {
+                    addButtonActionPerformed(evt);
+                } catch (TeacherTitleException e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                }
             }
         });
 
@@ -69,7 +74,7 @@ public class AddTeacherJDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) throws TeacherTitleException {//GEN-FIRST:event_addButtonActionPerformed
         String number, sex, birthday, id, department, teacherNumber, title, timeInJob;
         if (addTeacherJPanel1.idTextField.getText().length() != 18) {
             JOptionPane.showMessageDialog(null, "身份证长度必须为18位!");
@@ -84,6 +89,17 @@ public class AddTeacherJDialog extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "请选择性别!");
             return;
         }
+
+        //抛出教师职称异常
+        if (!addTeacherJPanel1.titleTextField.getText().trim().equals("讲师")) {
+            if (!addTeacherJPanel1.titleTextField.getText().trim().equals("副教授")) {
+                if (!addTeacherJPanel1.titleTextField.getText().trim().equals("教授")) {
+                    throw new TeacherTitleException("教师职称只能为讲师、副教授或教授。");
+                }
+            }
+        }
+
+
         number = this.addTeacherJPanel1.numberTextField.getText().trim();
         birthday = this.addTeacherJPanel1.birthdayTextField.getText().trim();
         id = this.addTeacherJPanel1.idTextField.getText().trim();
