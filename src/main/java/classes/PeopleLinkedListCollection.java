@@ -16,11 +16,4 @@ public class PeopleLinkedListCollection {
 
     public LinkedList<People> peopleLinkedList = new LinkedList<People>();
 
-    public PeopleLinkedListCollection() {
-    }
-
-    public PeopleLinkedListCollection(LinkedList<People> peopleLinkedList) {
-        this.peopleLinkedList = peopleLinkedList;
-    }
-
 }
