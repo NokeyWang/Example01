@@ -35,7 +35,7 @@ public class Dao {
      */
     public static void addATeacherIntoData(Teacher teacher) {
         /**
-         * 方法addATeacherIntoData的功能描述:TODO
+         * 方法addATeacherIntoData的功能描述:
          * 向文件中添加一条教师信息
          * @param [teacher]
          * @return void
@@ -58,7 +58,7 @@ public class Dao {
      */
     public static void displayPeopleInConsole(LinkedList<People> peopleLinkedList) {
         /**
-         * 方法displayPeople的功能描述:TODO
+         * 方法displayPeople的功能描述:
          * 展示全部人员信息
          * @param [peopleLinkedList]
          * @return void
@@ -86,7 +86,7 @@ public class Dao {
      */
     public static int removePeople(LinkedList<People> peopleLinkedList, String str) {
         /**
-         * 方法removePeople的功能描述:TODO
+         * 方法removePeople的功能描述:
          * 从peopleLinkedList中删除工号(学号)为str的教师(学生)
          * @param [peopleLinkedList, str]
          * @return int
@@ -123,7 +123,7 @@ public class Dao {
      */
     public static int toStoreAsString(LinkedList<People> peopleLinkedList, String path) {
         /**
-         * 方法toStoreAsString的功能描述:TODO
+         * 方法toStoreAsString的功能描述:
          * 将人员链表存储在path文件中
          * @param [peopleLinkedList, path]
          * @return void
@@ -170,7 +170,7 @@ public class Dao {
      */
     public static LinkedList<People> readFromStorage(String path) {
         /**
-         * 方法readFromStorage的功能描述:TODO
+         * 方法readFromStorage的功能描述:
          * 从存储文件中读取人员信息并存入链表
          * @param [path] 存储文件
          * @return java.util.LinkedList<Classes.People>

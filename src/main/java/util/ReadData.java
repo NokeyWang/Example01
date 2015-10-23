@@ -14,7 +14,7 @@ public class ReadData {
      */
     public static String readDataFromConsole() {
         /**
-         * 方法readDataFromConsole的功能描述:TODO
+         * 方法readDataFromConsole的功能描述:
          * 从Console当前行读取字符串
          * @param []
          * @return java.lang.String

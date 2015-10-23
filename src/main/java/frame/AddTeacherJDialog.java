@@ -6,24 +6,22 @@
 package frame;
 
 import classes.Teacher;
-import dao.Dao;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 
 /**
- * 新增教师窗口
+ *
  * @author CHester
  */
-public class AddTeacherJFrame extends javax.swing.JFrame {
+public class AddTeacherJDialog extends javax.swing.JDialog {
 
     /**
-     * Creates new form AddTeacherJFrame
+     * Creates new form AddTeacherJDialog
      */
-    public AddTeacherJFrame() {
+    public AddTeacherJDialog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         setVisible(true);
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -38,7 +36,7 @@ public class AddTeacherJFrame extends javax.swing.JFrame {
         addTeacherJPanel1 = new frame.AddTeacherJPanel();
         addButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         addButton.setText("添加");
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -54,10 +52,10 @@ public class AddTeacherJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(addTeacherJPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(161, 161, 161)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(addButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(160, 160, 160))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -65,39 +63,26 @@ public class AddTeacherJFrame extends javax.swing.JFrame {
                 .addComponent(addTeacherJPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private int addButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
-        /**
-         * 判断文本框中的输入是否合法
-         */
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         String number, sex, birthday, id, department, teacherNumber, title, timeInJob;
         if (addTeacherJPanel1.idTextField.getText().length() != 18) {
             JOptionPane.showMessageDialog(null, "身份证长度必须为18位!");
-            return -1;
+            return;
         }
-
-        /*
-        ————————————————————————————————————————————————————————————————————————————————————————————————————
-        此处请仿照上面添加输入的合法性检查!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        ————————————————————————————————————————————————————————————————————————————————————————————————————
-         */
-
-        /*
-         * 根据输入创建一个教师对象
-         */
+        //TODO:此处请仿照上面添加输入的合法性检查!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (addTeacherJPanel1.maleRadioButton.isSelected()) {
             sex = addTeacherJPanel1.maleRadioButton.getText().trim();
         } else if (addTeacherJPanel1.femaleRadioButton.isSelected()) {
             sex = addTeacherJPanel1.femaleRadioButton.getText().trim();
         } else {
             JOptionPane.showMessageDialog(null, "请选择性别!");
-            return -1;
+            return;
         }
         number = this.addTeacherJPanel1.numberTextField.getText().trim();
         birthday = this.addTeacherJPanel1.birthdayTextField.getText().trim();
@@ -106,12 +91,9 @@ public class AddTeacherJFrame extends javax.swing.JFrame {
         teacherNumber = this.addTeacherJPanel1.teacherNumberTextField.getText().trim();
         title = this.addTeacherJPanel1.titleTextField.getText().trim();
         timeInJob = this.addTeacherJPanel1.timeInJobTextField.getText().trim();
-        Teacher teacher = new Teacher(number, sex, birthday, id, department, teacherNumber, title, timeInJob);
-
-        Dao.addATeacherIntoData(teacher);
-        JOptionPane.showMessageDialog(null, "添加完成!");
+        teacher = new Teacher(number, sex, birthday, id, department, teacherNumber, title, timeInJob);
         this.dispose();
-        return 1;
+        return;
     }//GEN-LAST:event_addButtonActionPerformed
 
     /**
@@ -131,20 +113,27 @@ public class AddTeacherJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddTeacherJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTeacherJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddTeacherJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTeacherJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddTeacherJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTeacherJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddTeacherJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTeacherJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddTeacherJFrame().setVisible(true);
+                AddTeacherJDialog dialog = new AddTeacherJDialog(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -153,4 +142,9 @@ public class AddTeacherJFrame extends javax.swing.JFrame {
     private javax.swing.JButton addButton;
     private frame.AddTeacherJPanel addTeacherJPanel1;
     // End of variables declaration//GEN-END:variables
+    private Teacher teacher;
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
 }

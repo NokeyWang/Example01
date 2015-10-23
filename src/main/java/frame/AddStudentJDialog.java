@@ -5,23 +5,23 @@
  */
 package frame;
 
-import classes.EnumSex;
 import classes.Student;
-import dao.Dao;
 
 import javax.swing.*;
 
 /**
- * 新增学生信息窗口
+ *
  * @author CHester
  */
-public class AddStudentJFrame extends javax.swing.JFrame {
+public class AddStudentJDialog extends javax.swing.JDialog {
 
     /**
-     * Creates new form AddStudentJFrame
+     * Creates new form AddStudentJDialog
      */
-    public AddStudentJFrame() {
+    public AddStudentJDialog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
+        setVisible(true);
     }
 
     /**
@@ -36,7 +36,7 @@ public class AddStudentJFrame extends javax.swing.JFrame {
         addStudentJPanel1 = new frame.AddStudentJPanel();
         addButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         addButton.setText("添加");
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -52,10 +52,10 @@ public class AddStudentJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(addStudentJPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(163, 163, 163)
                 .addComponent(addButton)
-                .addGap(150, 150, 150))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -63,16 +63,37 @@ public class AddStudentJFrame extends javax.swing.JFrame {
                 .addComponent(addStudentJPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(addButton)
-                .addGap(0, 23, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
-        int mark = addAStudentAction();
-    }//GEN-LAST:event_addButtonActionPerformed
+        String number, sex, birthday, id, studentNumber, discipline, grade;
+
+        if (addStudentJPanel1.idTextField.getText().length() != 18) {
+            JOptionPane.showMessageDialog(null, "身份证长度必须为18位!");
+            return;
+        }
+        //TODO:此处请仿照上面添加输入的合法性检查!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if (addStudentJPanel1.maleRadioButton.isSelected()) {
+            sex = addStudentJPanel1.maleRadioButton.getText().trim();
+        } else if (addStudentJPanel1.femaleRadioButton.isSelected()) {
+            sex = addStudentJPanel1.femaleRadioButton.getText().trim();
+        } else {
+            JOptionPane.showMessageDialog(null, "请选择性别!");
+            return;
+        }
+        number = this.addStudentJPanel1.numberTextField.getText().trim();
+        birthday = this.addStudentJPanel1.birthdayTextField.getText().trim();
+        id = this.addStudentJPanel1.idTextField.getText().trim();
+        studentNumber = this.addStudentJPanel1.studentNumberTextField.getText().trim();
+        discipline = this.addStudentJPanel1.disciplineTextField.getText().trim();
+        grade = this.addStudentJPanel1.gradeTextField.getText().trim();
+        student = new Student(number, sex, birthday, id, studentNumber, discipline, grade);
+        this.dispose();
+        return;    }//GEN-LAST:event_addButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -91,20 +112,27 @@ public class AddStudentJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddStudentJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStudentJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddStudentJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStudentJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddStudentJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStudentJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddStudentJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStudentJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddStudentJFrame().setVisible(true);
+                AddStudentJDialog dialog = new AddStudentJDialog(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -113,47 +141,9 @@ public class AddStudentJFrame extends javax.swing.JFrame {
     private javax.swing.JButton addButton;
     private frame.AddStudentJPanel addStudentJPanel1;
     // End of variables declaration//GEN-END:variables
+    private Student student;
 
-    private int addAStudentAction() {
-        /*
-         * 判断输入是否合法
-         */
-        String number, sex, birthday, id, studentNumber, discipline, grade;
-        if (addStudentJPanel1.idTextField.getText().length() != 18) {
-            JOptionPane.showMessageDialog(null, "身份证长度必须为18位!");
-            return -1;
-        }
-
-        /*
-        ————————————————————————————————————————————————————————————————————————————————————————————————————
-        此处请仿照上面添加输入的合法性检查!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        ————————————————————————————————————————————————————————————————————————————————————————————————————
-         */
-
-        /*
-         * 根据输入创建一个学生对象
-         */
-
-        if (addStudentJPanel1.maleRadioButton.isSelected()) {
-            sex = addStudentJPanel1.maleRadioButton.getText().trim();
-        } else if (addStudentJPanel1.femaleRadioButton.isSelected()) {
-            sex = addStudentJPanel1.femaleRadioButton.getText().trim();
-        } else {
-            JOptionPane.showMessageDialog(null, "请选择性别!");
-            return -1;
-        }
-        number = this.addStudentJPanel1.numberTextField.getText().trim();
-        birthday = this.addStudentJPanel1.birthdayTextField.getText().trim();
-        id = this.addStudentJPanel1.idTextField.getText().trim();
-        studentNumber = this.addStudentJPanel1.studentNumberTextField.getText().trim();
-        discipline = this.addStudentJPanel1.disciplineTextField.getText().trim();
-        grade = this.addStudentJPanel1.gradeTextField.getText().trim();
-        Student student = new Student(number, sex, birthday, id, studentNumber, discipline, grade);
-
-        Dao.addAStudentIntoData(student);
-        JOptionPane.showMessageDialog(null, "添加完成!");
-        this.dispose();
-        return 1;
+    public Student getStudent() {
+        return student;
     }
-
 }

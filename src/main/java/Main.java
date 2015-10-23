@@ -14,14 +14,15 @@ import java.util.Date;
 public class Main {
 
     public static void main(String[] args) {
-        initializeData();
-        new MainJFrame().setVisible(true);
+        PeopleLinkedListCollection peopleLinkedListCollection = initializeData();
+        MainJFrame mainJFrame = new MainJFrame(peopleLinkedListCollection);
+        mainJFrame.setVisible(true);
     }
 
     /**
      * 在文件中初始化添加几个人员数据
      */
-    public static void initializeData() {
+    public static PeopleLinkedListCollection initializeData() {
         /*
          * 乱序添加几个教师和学生
          */
@@ -39,11 +40,7 @@ public class Main {
         peopleLinkedListCollection.peopleLinkedList.add(new Teacher("103", EnumSex.male, new Date(1966 - 1900, 4 - 1, 22),
                 "222111196604222211", "CIST", "08048", "教授", "27"));
 
-        /*
-         * 将人员信息存入peopleInfo.dat
-         */
+        return peopleLinkedListCollection;
 
-        String path = Conf.getPath();
-        Dao.toStoreAsString(peopleLinkedListCollection.peopleLinkedList, path);
     }
 }

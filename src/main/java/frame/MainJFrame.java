@@ -5,6 +5,16 @@
  */
 package frame;
 
+import classes.PeopleLinkedListCollection;
+import classes.Student;
+import classes.Teacher;
+import com.sun.codemodel.internal.JOp;
+import dao.Dao;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+
 /**
  * 主控制窗口
  * @author CHester
@@ -16,6 +26,11 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     public MainJFrame() {
         initComponents();
+    }
+
+    public MainJFrame(PeopleLinkedListCollection peopleLinkedListCollection) throws HeadlessException {
+        initComponents();
+        this.peopleLinkedListCollection = peopleLinkedListCollection;
     }
 
     /**
@@ -65,46 +80,60 @@ public class MainJFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addStudentButton, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
-                    .addComponent(addTeacherButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(displayInfoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addStudentButton, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                            .addComponent(addTeacherButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(displayInfoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(addStudentButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(addTeacherButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(displayInfoButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addStudentButton)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(addTeacherButton)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(displayInfoButton)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentButtonActionPerformed
-        // TODO add your handling code here:
-        new AddStudentJFrame().setVisible(true);
+    private void addStudentButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_addStudentButtonActionPerformed
+        AddStudentJDialog addStudentJDialog = new AddStudentJDialog(this, true);
+        student = null;
+        student = addStudentJDialog.getStudent();
+        //TODO: try stu.check(
+        if (student == null) {
+            JOptionPane.showMessageDialog(null, "添加失败!");
+        } else {
+            JOptionPane.showMessageDialog(null, "添加成功!");
+        }
+        this.peopleLinkedListCollection.peopleLinkedList.add(student);
     }//GEN-LAST:event_addStudentButtonActionPerformed
 
     private void addTeacherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTeacherButtonActionPerformed
-        // TODO add your handling code here:
-        new AddTeacherJFrame().setVisible(true);
-    }//GEN-LAST:event_addTeacherButtonActionPerformed
+        AddTeacherJDialog addTeacherJDialog = new AddTeacherJDialog(this, true);
+        teacher = null;
+        teacher = addTeacherJDialog.getTeacher();
+        if (teacher == null) {
+            JOptionPane.showMessageDialog(null, "添加失败!");
+        } else {
+            JOptionPane.showMessageDialog(null, "添加成功!");
+        }
+        this.peopleLinkedListCollection.peopleLinkedList.add(teacher);
+   }//GEN-LAST:event_addTeacherButtonActionPerformed
 
     private void displayInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayInfoButtonActionPerformed
-        // TODO add your handling code here:
-        new DisplayInfoJFrame().setVisible(true);
+        DisplayInfoJDialog displayInfoJDialog = new DisplayInfoJDialog(this, true, this.peopleLinkedListCollection);
     }//GEN-LAST:event_displayInfoButtonActionPerformed
 
     /**
@@ -148,4 +177,15 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton displayInfoButton;
     private javax.swing.Box.Filler filler1;
     // End of variables declaration//GEN-END:variables
+    private Student student;
+    private Teacher teacher;
+    private PeopleLinkedListCollection peopleLinkedListCollection;
+
+    public PeopleLinkedListCollection getPeopleLinkedListCollection() {
+        return peopleLinkedListCollection;
+    }
+
+    public void setPeopleLinkedListCollection(PeopleLinkedListCollection peopleLinkedListCollection) {
+        this.peopleLinkedListCollection = peopleLinkedListCollection;
+    }
 }
