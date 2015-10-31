@@ -15,6 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         PeopleLinkedListCollection peopleLinkedListCollection = initializeData();
+        Dao.toStoreAsString(peopleLinkedListCollection.peopleLinkedList, Conf.getPath());
         MainJFrame mainJFrame = new MainJFrame(peopleLinkedListCollection);
         mainJFrame.setVisible(true);
     }

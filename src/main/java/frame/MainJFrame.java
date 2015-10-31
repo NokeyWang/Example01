@@ -118,6 +118,7 @@ public class MainJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "添加成功!");
         }
         this.peopleLinkedListCollection.peopleLinkedList.add(student);
+        Dao.addAStudentIntoData(student);
     }//GEN-LAST:event_addStudentButtonActionPerformed
 
     private void addTeacherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTeacherButtonActionPerformed
@@ -130,6 +131,7 @@ public class MainJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "添加成功!");
         }
         this.peopleLinkedListCollection.peopleLinkedList.add(teacher);
+        Dao.addATeacherIntoData(teacher);
    }//GEN-LAST:event_addTeacherButtonActionPerformed
 
     private void displayInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayInfoButtonActionPerformed
