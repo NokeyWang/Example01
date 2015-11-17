@@ -2,6 +2,7 @@ package classes;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.StringTokenizer;
 
 /**
  * 学生类
@@ -31,17 +32,15 @@ public class Student extends People implements Serializable {
 
     /**
      * 根据字符串格式的输入进行构造
-     *
-     * @param number 编号
-     * @param sex 性别(男性为"male",女性为"female")
+     *  @param sex 性别(男性为"male",女性为"female")
      * @param birthday 生日(格式为:yyyy-MM-dd)
-     * @param id 身份证号(18位数字)
      * @param studentNumber 学号
      * @param discipline 专业
      * @param grade 年级
+     * @param number 编号
      */
-    public Student(String number, String sex, String birthday, String id,
-                   String studentNumber, String discipline, String grade) {
+    public Student(String number, String sex, String birthday, String id, String studentNumber,
+                   String discipline, String grade) {
         super(number, sex, birthday, id);
         this.studentNumber = studentNumber;
         this.discipline = discipline;
