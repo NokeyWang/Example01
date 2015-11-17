@@ -81,13 +81,15 @@ public class AddTeacherJDialog extends javax.swing.JDialog {
             return;
         }
         //TODO:此处请仿照上面添加输入的合法性检查!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        if (addTeacherJPanel1.maleRadioButton.isSelected()) {
-            sex = addTeacherJPanel1.maleRadioButton.getText().trim();
-        } else if (addTeacherJPanel1.femaleRadioButton.isSelected()) {
-            sex = addTeacherJPanel1.femaleRadioButton.getText().trim();
+        if (!addTeacherJPanel1.maleRadioButton.isSelected()) {
+            if (addTeacherJPanel1.femaleRadioButton.isSelected()) {
+                sex = addTeacherJPanel1.femaleRadioButton.getText().trim();
+            } else {
+                JOptionPane.showMessageDialog(null, "请选择性别!");
+                return;
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "请选择性别!");
-            return;
+            sex = addTeacherJPanel1.maleRadioButton.getText().trim();
         }
 
         //抛出教师职称异常
