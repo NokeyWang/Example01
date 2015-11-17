@@ -10,10 +10,12 @@ import classes.Student;
 import classes.Teacher;
 import com.sun.codemodel.internal.JOp;
 import dao.Dao;
+import dao.SQLOperation;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.LinkedList;
 
 /**
  * 主控制窗口
@@ -117,8 +119,8 @@ public class MainJFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "添加成功!");
         }
-        this.peopleLinkedListCollection.peopleLinkedList.add(student);
-        Dao.addAStudentIntoData(student);
+        //this.peopleLinkedListCollection.peopleLinkedList.add(student);
+        SQLOperation.insertAStudent(student);
     }//GEN-LAST:event_addStudentButtonActionPerformed
 
     private void addTeacherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTeacherButtonActionPerformed
@@ -135,7 +137,8 @@ public class MainJFrame extends javax.swing.JFrame {
    }//GEN-LAST:event_addTeacherButtonActionPerformed
 
     private void displayInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayInfoButtonActionPerformed
-        DisplayInfoJDialog displayInfoJDialog = new DisplayInfoJDialog(this, true, this.peopleLinkedListCollection);
+        studentLinkedList = SQLOperation.getAllStudents();
+        DisplayInfoJDialog displayInfoJDialog = new DisplayInfoJDialog(this, true, studentLinkedList);
     }//GEN-LAST:event_displayInfoButtonActionPerformed
 
     /**
@@ -182,7 +185,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private Student student;
     private Teacher teacher;
     private PeopleLinkedListCollection peopleLinkedListCollection;
-
+    private LinkedList<Student> studentLinkedList;
     public PeopleLinkedListCollection getPeopleLinkedListCollection() {
         return peopleLinkedListCollection;
     }
