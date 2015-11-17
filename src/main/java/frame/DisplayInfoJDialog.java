@@ -14,6 +14,7 @@ import dao.Dao;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
  *
@@ -29,14 +30,40 @@ public class DisplayInfoJDialog extends javax.swing.JDialog {
         initComponents();
     }
 
-    public DisplayInfoJDialog(Frame owner, boolean modal, PeopleLinkedListCollection peopleLinkedListCollection) {
+    public DisplayInfoJDialog(Frame owner, boolean modal, LinkedList<Student> studentLinkedList) {
         super(owner, modal);
         initComponents();
-        this.peopleLinkedListCollection = peopleLinkedListCollection;
-        iterator = this.peopleLinkedListCollection.peopleLinkedList.iterator();
-        this.nextInfo();
+        this.studentLinkedList = studentLinkedList;
+        studentIterator = this.studentLinkedList.iterator();
+        this.nextStudentInfo();
         setVisible(true);
     }
+
+    private void nextStudentInfo() {
+        if (!studentIterator.hasNext()) {
+            JOptionPane.showMessageDialog(null, "已到最后一条!");
+            return;
+        }
+
+        Student student = studentIterator.next();
+        this.displayInfoJPanel1.jLabel1.setText("编号:");
+        this.displayInfoJPanel1.jLabel2.setText("性别:");
+        this.displayInfoJPanel1.jLabel3.setText("生日:");
+        this.displayInfoJPanel1.jLabel4.setText("身份证号:");
+        this.displayInfoJPanel1.infoJLabel1.setText(student.getNumber());
+        this.displayInfoJPanel1.infoJLabel2.setText(student.getSex().toString());
+        this.displayInfoJPanel1.infoJLabel3.setText(student.getBirthday());
+        this.displayInfoJPanel1.infoJLabel4.setText(student.getId());
+        this.displayInfoJPanel1.jLabel8.setVisible(false);
+        this.displayInfoJPanel1.infoJLabel8.setVisible(false);
+        this.displayInfoJPanel1.jLabel5.setText("学号:");
+        this.displayInfoJPanel1.jLabel6.setText("专业:");
+        this.displayInfoJPanel1.jLabel7.setText("年级:");
+        this.displayInfoJPanel1.infoJLabel5.setText(student.getStudentNumber());
+        this.displayInfoJPanel1.infoJLabel6.setText(student.getDiscipline());
+        this.displayInfoJPanel1.infoJLabel7.setText(student.getGrade());
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -96,7 +123,7 @@ public class DisplayInfoJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nextJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextJButtonActionPerformed
-        this.nextInfo();
+        this.nextStudentInfo();
     }//GEN-LAST:event_nextJButtonActionPerformed
 
     private void returnJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnJButtonActionPerformed
@@ -154,6 +181,8 @@ public class DisplayInfoJDialog extends javax.swing.JDialog {
     private PeopleLinkedListCollection peopleLinkedListCollection;
     private Iterator<People> iterator;
 
+    private LinkedList<Student> studentLinkedList;
+    private Iterator<Student> studentIterator;
     /**
      * 读取下一名人员的信息,根据该人员是教师或者学生进行相应格式的展示
      */
